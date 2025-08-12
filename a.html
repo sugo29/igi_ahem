@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Showcase</title>
+  <style>
+    :root {
+      --primary: #0a2e38; /* Bottle green */
+      --secondary: #ffffff; /* White */
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #f8f6f2;
+    }
+
+    .logo-strip-container {
+      background: var(--primary);
+      padding: 40px 0;
+      margin: 50px 0;
+      position: relative;
+    }
+
+    .logo-strip {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .logo-strip::before, .logo-strip::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+      background: linear-gradient(to right, var(--primary) 0%, transparent 100%);
+    }
+
+    .logo-strip::before {
+      left: 0;
+    }
+
+    .logo-strip::after {
+      right: 0;
+      background: linear-gradient(to left, var(--primary) 0%, transparent 100%);
+    }
+
+    .logo-strip-inner {
+      display: inline-block;
+      animation: scrollLogos 30s linear infinite;
+    }
+
+    .logo-strip:hover .logo-strip-inner {
+      animation-play-state: paused;
+    }
+
+    .logo-item {
+      display: inline-block;
+      margin: 0 50px;
+      vertical-align: middle;
+      filter: brightness(0) invert(1) drop-shadow(0 0 1px rgba(255,255,255,0.7));
+      transition: all 0.3s ease;
+    }
+
+    .logo-item:hover {
+      transform: scale(1.1);
+      filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255,255,255,1));
+    }
+
+    .logo-item img {
+      height: 50px;
+      width: auto;
+    }
+
+    @keyframes scrollLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .logo-item {
+        margin: 0 30px;
+      }
+      .logo-item img {
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-item {
+        margin: 0 20px;
+      }
+      .logo-item img {
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-strip-container">
+    <div class="logo-strip">
+      <div class="logo-strip-inner">
+        <!-- First set of brand logos -->
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Samsung_Logo.svg" alt="Samsung">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+        </span>
+        
+        <!-- Duplicate set for seamless looping -->
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Samsung_Logo.svg" alt="Samsung">
+        </span>
+        <span class="logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Pause animation when tab is inactive
+    document.addEventListener('visibilitychange', function() {
+      const logoStrip = document.querySelector('.logo-strip-inner');
+      if (document.hidden) {
+        logoStrip.style.animationPlayState = 'paused';
+      } else {
+        logoStrip.style.animationPlayState = 'running';
+      }
+    });
+  </script>
+</body>
+</html>
